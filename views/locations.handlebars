@@ -1,0 +1,38 @@
+<h1>Locations</h1>
+
+<a href="/locations/add">Add location</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Lantitude
+            </th>
+            <th>
+                Longitude
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {{#locations}}
+        <tr>
+            <td>
+                {{description}}
+            </td>
+            <td>
+                {{latitude}}
+            </td>
+            <td>
+                {{longitude}}
+            </td>
+            <td>
+                <a href="/locations/delete/{{id}}">Delete</a>
+            </td>
+        </tr>
+        {{/locations}}
+    </tbody>
+</table>

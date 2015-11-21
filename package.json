@@ -1,0 +1,29 @@
+{
+  "name": "ru-close",
+  "version": "1.0.0",
+  "description": "Experimenting with location",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codex-academy/DebuggingTips.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codex-academy/DebuggingTips/issues"
+  },
+  "homepage": "https://github.com/codex-academy/DebuggingTips#readme",
+  "dependencies": {
+    "body-parser": "^1.9.2",
+    "connection-provider": "avermeulen/connection-provider",
+    "express": "^4.10.2",
+    "express-handlebars": "^1.1.0",
+    "express-myconnection": "^1.0.4",
+    "mysql": "^2.5.3",
+    "socket.io": "^1.3.7",
+    "winston": "^2.0.1"
+  }
+}
