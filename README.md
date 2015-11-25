@@ -7,9 +7,9 @@ Experiments with geolocation
 ## Create a database
 
 ```sql
-CREATE DATABASE locations;
+CREATE DATABASE geolocation;
 CREATE USER geo@localhost IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON locations.* TO geo@localhost;
+GRANT ALL PRIVILEGES ON geolocation.* TO geo@localhost;
 FLUSH PRIVILEGES;
 ```
 
