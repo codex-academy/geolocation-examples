@@ -23,13 +23,6 @@ create table locations(
     latitude char(30),
     longitude char(30));
 
-create table watchers (
-    id int primary auto_increment,
-    location_id int,
-    latitude char(30),
-    longitude char(30),
-    foreign key (location_id) references locations(id)
-);
 
 ```
 
