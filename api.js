@@ -1,0 +1,97 @@
+var geolib = require('geolib'),
+    Promise = require('bluebird');
+
+exports.distance_from = function(req, res, next){
+    req.getServices()
+        .then(function(services){
+            var dataService = services.dataService;
+            return dataService.isIn([req.params.from, req.params.to])
+        })
+        .then(function(locations){
+
+            var from = locations[0];
+            var to = locations[1];
+
+            var distance = geolib.getDistance(
+                {latitude: Number(from.latitude), longitude: Number(from.longitude)},
+                {latitude: Number(to.latitude), longitude: Number(to.longitude)}
+            );
+
+            res.send({
+                from : from.description,
+                to : to.description,
+                distance : distance
+            });
+        });
+};
+
+
+exports.center = function(req, res, next){
+    req.getServices()
+        .then(function(services){
+            var dataService = services.dataService;
+            return dataService.getLocations()
+        })
+        .then(function(locations){
+            var center = geolib.getCenter(locations);
+            res.send({center : center});
+        });
+};
+
+
+exports.distance = function(req, res, next){
+    req.getServices()
+        .then(function(services){
+            var dataService = services.dataService;
+            return dataService.isIn([req.params.from, req.params.to]);
+        })
+        .then(function(locations){
+
+            var from = locations[0];
+            var to = locations[1];
+            var distance = req.params.distance;
+
+            var inCircle = geolib.isPointInCircle(
+                {latitude: Number(from.latitude), longitude: Number(from.longitude)},
+                {latitude: Number(to.latitude), longitude: Number(to.longitude)},
+                distance
+            );
+
+            res.send({
+                from : from.description,
+                to : to.description,
+                distance : distance,
+                inCircle : inCircle
+            });
+        });
+};
+
+exports.nearest = function(req, res, next){
+    req.getServices()
+        .then(function(services){
+            var dataService = services.dataService;
+            return Promise.join(dataService.isIn([req.params.from]), dataService.notIn([req.params.from]));
+        })
+        .then(function(results){
+
+            var fromList = results[0];
+            var locations = results[1];
+
+            var from = fromList[0];
+            var distance = req.params.distance;
+
+            var locationsMap = {};
+            locations.forEach(function(loc){
+                locationsMap[loc.description] = {latitude : loc.latitude, longitude : loc.longitude};
+            });
+
+            var nearest = geolib.findNearest(
+                from,
+                locationsMap
+            );
+
+            nearest.nearest_to = from;
+
+            res.send(nearest);
+        });
+};
