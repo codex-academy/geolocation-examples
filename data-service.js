@@ -25,6 +25,7 @@ module.exports = function(connection){
     };
 
     var isIn = function(ids){
+        console.log(ids);
         return query("select * from locations where id in (?)", [ids])
     };
 

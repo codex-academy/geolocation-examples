@@ -1,64 +1,78 @@
 
+
 <div class="row">
 
-<div class="eight columns">
-    <h1>Locations</h1>
+    <div class="eight columns">
+        <h1>Locations</h1>
 
-    <a href="/locations/add">Add location</a>
-    <form id="locationForm">
-    <input type="button" name="name" id="get_distance" value="Get distance">
-    <input type="button" name="name" id="get_center" value="Get center">
-    <input type="button" name="name" id="get_closest" value="Nearest">
-    <input type="button" name="name" id="in_circle" value="In circle?">
-    <input type="range" name="name" class="u-full-width" id="slider" value="" step="100" max="20000">
-    <span id="circleSize"></span>
-    <table>
-        <thead>
-            <tr>
-                <th>
+        <a href="/locations/add">Add location</a>
+        <form id="locationForm">
+            <input type="button" name="name" id="get_distance" value="Get distance">
+            <input type="button" name="name" id="get_center" value="Get center">
+            <input type="button" name="name" id="get_closest" value="Nearest">
+            <input type="button" name="name" id="in_circle" value="In circle?">
+            <input type="range" name="name" class="u-full-width" id="slider" value="" step="100" max="20000">
+            <span id="circleSize"></span>
+            <input type="button" name="name" id="put_on_map" value="Put on map">
+            <input type="button" name="name" id="clear_markers" value="Clear map">
+            <input type="button" name="name" id="hide_map" value="Hide/show map">
 
-                </th>
-                <th>
-                    Name
-                </th>
-                <th>
-                    Latitude
-                </th>
-                <th>
-                    Longitude
-                </th>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
 
-            </tr>
-        </thead>
-        <tbody id="locations">
-            {{#locations}}
-            <tr>
-                <td>
-                    <input type="checkbox" name="selected" value="{{id}}">
-                </td>
-                <td>
-                    {{description}}
-                </td>
-                <td>
-                    {{latitude}}
-                </td>
-                <td>
-                    {{longitude}}
-                </td>
-                <td>
-                    <a href="/locations/delete/{{id}}">Delete</a>
-                </td>
-            </tr>
-            {{/locations}}
-        </tbody>
-    </table>
-    </form>
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Latitude
+                        </th>
+                        <th>
+                            Longitude
+                        </th>
 
-</div>
-<div class="four columns">
-    <h2>Distance</h2>
-    <div id="distance">
+                    </tr>
+                </thead>
+                <tbody id="locations">
+                    {{#locations}}
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="selected" value="{{id}}">
+                            </td>
+                            <td>
+                                {{description}}
+                            </td>
+                            <td>
+                                {{latitude}}
+                            </td>
+                            <td>
+                                {{longitude}}
+                            </td>
+                            <td>
+                                <a href="/locations/delete/{{id}}">Delete</a>
+                            </td>
+                        </tr>
+                    {{/locations}}
+                </tbody>
+            </table>
+        </form>
+
+    </div>
+    <div class="four columns">
+        <h2>Distance</h2>
+        <div id="distance">
+
+        </div>
+        <hr>
+        <div id="map">
+
+        </div>
 
     </div>
 </div>
-</div>
+<script>
+
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZUOeLHok7Np_KxVUfvVNFRVVEUEb0mbg&signed_in=true&callback=initMap"></script>

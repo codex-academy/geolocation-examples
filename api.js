@@ -25,6 +25,30 @@ exports.distance_from = function(req, res, next){
         });
 };
 
+exports.get_all = function(req, res, next){
+    req.getServices()
+        .then(function(services){
+            var dataService = services.dataService;
+
+            console.log(req.body.ids);
+
+            return dataService.isIn(JSON.parse(req.params.id));
+        })
+        .then(function(locations){
+
+            var locations = locations.map(function(location){
+                return {
+                    lat : Number(location.latitude),
+                    lng : Number(location.longitude)
+                };
+            });
+
+            res.send({
+                location : locations[0]
+            });
+        });
+};
+
 
 exports.center = function(req, res, next){
     req.getServices()
