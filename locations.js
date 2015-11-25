@@ -21,7 +21,7 @@ exports.add = function(req, res, next){
         longitude : data.longitude
     };
 
-    req.getServices()
+    req.getServices('dataService')
         .then(function(services){
             var dataService = services.dataService;
             return dataService.addLocation(location)

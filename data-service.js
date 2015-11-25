@@ -24,11 +24,20 @@ module.exports = function(connection){
         return query("delete from locations where id = ?", [Number(locationId)]);
     };
 
+    var isIn = function(ids){
+        return query("select * from locations where id in (?)", [ids])
+    };
+
+    var notIn = function(ids){
+        return query("select * from locations where id not in (?)", [ids])
+    };
 
     return {
         addLocation : addLocation,
         getLocations : getLocations,
-        deleteLocation : deleteLocation
+        deleteLocation : deleteLocation,
+        isIn : isIn,
+        notIn : notIn
     };
 
 }

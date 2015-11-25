@@ -1,38 +1,64 @@
-<h1>Locations</h1>
 
-<a href="/locations/add">Add location</a>
+<div class="row">
 
-<table>
-    <thead>
-        <tr>
-            <th>
-                Name
-            </th>
-            <th>
-                Lantitude
-            </th>
-            <th>
-                Longitude
-            </th>
+<div class="eight columns">
+    <h1>Locations</h1>
 
-        </tr>
-    </thead>
-    <tbody>
-        {{#locations}}
-        <tr>
-            <td>
-                {{description}}
-            </td>
-            <td>
-                {{latitude}}
-            </td>
-            <td>
-                {{longitude}}
-            </td>
-            <td>
-                <a href="/locations/delete/{{id}}">Delete</a>
-            </td>
-        </tr>
-        {{/locations}}
-    </tbody>
-</table>
+    <a href="/locations/add">Add location</a>
+    <form id="locationForm">
+    <input type="button" name="name" id="get_distance" value="Get distance">
+    <input type="button" name="name" id="get_center" value="Get center">
+    <input type="button" name="name" id="get_closest" value="Nearest">
+    <input type="button" name="name" id="in_circle" value="In circle?">
+    <input type="range" name="name" class="u-full-width" id="slider" value="" step="100" max="20000">
+    <span id="circleSize"></span>
+    <table>
+        <thead>
+            <tr>
+                <th>
+
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Latitude
+                </th>
+                <th>
+                    Longitude
+                </th>
+
+            </tr>
+        </thead>
+        <tbody id="locations">
+            {{#locations}}
+            <tr>
+                <td>
+                    <input type="checkbox" name="selected" value="{{id}}">
+                </td>
+                <td>
+                    {{description}}
+                </td>
+                <td>
+                    {{latitude}}
+                </td>
+                <td>
+                    {{longitude}}
+                </td>
+                <td>
+                    <a href="/locations/delete/{{id}}">Delete</a>
+                </td>
+            </tr>
+            {{/locations}}
+        </tbody>
+    </table>
+    </form>
+
+</div>
+<div class="four columns">
+    <h2>Distance</h2>
+    <div id="distance">
+
+    </div>
+</div>
+</div>
