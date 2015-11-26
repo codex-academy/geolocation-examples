@@ -68,6 +68,7 @@ app.get('/api/center', api.center);
 app.get('/api/in_circle/:from/:to/:distance', api.distance);
 app.get('/api/nearest/:from', api.nearest);
 app.get('/api/selected/:id', api.get_all);
+app.get('/api/locations', api.locations);
 
 //this should be a post but this is only an illustration of CRUD - not on good practices
 //app.delete('/issues/:id', issues.delete);
