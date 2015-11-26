@@ -25,10 +25,10 @@ io.on('connection', function(socket){
 
 var dbOptions = {
       host: 'localhost',
-      user: 'root',
-      password: 'passw0rd',
+      user: 'geo',
+      password: 'password',
       port: 3306,
-      database: 'ruclose'
+      database: 'geolocation'
 };
 
 //setup template handlebars as the template engine
