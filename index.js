@@ -25,10 +25,10 @@ io.on('connection', function(socket){
 
 var dbOptions = {
       host: 'localhost',
-      user: 'root',
-      password: 'passw0rd',
+      user: 'geo',
+      password: 'password',
       port: 3306,
-      database: 'ruclose'
+      database: 'locations'
 };
 
 //setup template handlebars as the template engine
@@ -68,6 +68,7 @@ app.get('/api/center', api.center);
 app.get('/api/in_circle/:from/:to/:distance', api.distance);
 app.get('/api/nearest/:from', api.nearest);
 app.get('/api/selected/:id', api.get_all);
+app.get('/api/locations', api.locations);
 
 //this should be a post but this is only an illustration of CRUD - not on good practices
 //app.delete('/issues/:id', issues.delete);

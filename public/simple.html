@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Locations</h1>
+        <div id="location">
+        </div>
+        <script src="./geolib.min.js">
+
+        </script>
+    </body>
+    <script type="text/javascript">
+    //navigator.geolocation.getCurrentPosition(function(location){
+
+    //});
+
+    var loc = document.getElementById("location");
+    var location = loc.innerHTML = location.coords.latitude + ", " + location.coords.longitude;
+
+    var distance = geolib.getDistance(
+        {latitude: 51.5103, longitude: 7.49347},
+        {latitude: "51° 31' N", longitude: "7° 28' E"}
+    );
+
+    location.innerHTML = "distance : " + distance;
+
+    </script>
+</html>

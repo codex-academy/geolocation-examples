@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+
+      .right-column {
+        width: 75%;
+        float: right;
+        padding-top: 1em;
+      }
+
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+---
+
+class: center, middle
+
+#geolocation intro.
+`where am I... and you?`
+
+---
+
+# we will look at
+
+* geolocation concepts
+* get coordinates in HTML5
+* the `geolib` module
+* drawing on maps
+* questions... !?
+
+---
+
+# What is a coordinate?
+
+---
+
+# How can we use geolocation/coordinates?
+
+* Distance between two coordinates
+--
+
+* Find the centre of a list of coordinates
+--
+
+* Is inside geofence
+--
+
+* Order coordinates by distance
+--
+
+* Find total distance between coordinates
+--
+
+* Get speed
+
+---
+
+# maps
+
+--
+
+## Google maps
+
+--
+```javascript
+
+function initMap() {
+  var myLatLng = {lat: -25.363, lng: 131.044};
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 4,
+    center: myLatLng
+  });
+
+  var marker = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    title: 'Hello World!'
+  });
+}
+
+```
+--
+
+## Open Street maps
+
+---
+
+# Getting coordinates in HTML5
+
+
+Create a file called `where.html` and try this code:
+
+```javascript
+navigator.geolocation.getCurrentPosition(function(location){
+    alert(location.coords.longitude + ", " + location.coords.longitude);
+});
+```
+---
+
+#Getting coordinates
+
+--
+
+In a file called `where.html`
+
+```html
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Locations</h1>
+        <div id="location">
+        </div>
+    </body>
+    <script type="text/javascript">
+    navigator.geolocation.getCurrentPosition(function(location){
+        var loc = document.getElementById("location");
+        loc.innerHTML = location.coords.latitude + ", " + location.coords.longitude;
+    });
+    </script>
+</html>
+```
+
+To use this with Chrome you can install a simple http server called `http-server`
+
+`npm install -g http-server`
+
+then run it in the folder where your html file is : `http-server`
+
+---
+
+#Challenges
+
+* Get the current coordinates when a button is clicked
+
+--
+
+* Once your button is working, display the coordinates in two text boxes one for latitude & longitude when the button is pressed.
+
+
+---
+
+# geolib
+
+`goelocation utilities for Javascript`
+
+--
+
+Front end & back end.
+
+--
+
+On github @ https://github.com/manuelbieh/Geolib
+
+`npm install geolib`
+
+```javascript
+var distance = geolib.getDistance(
+    {latitude: 51.5103, longitude: 7.49347},
+    {latitude: 51.70, longitude: 7.32092},
+);
+```
+
+---
+
+## HTML5 geolocation + geolib  = amazing things!
+
+--
+## + google maps
+--
+
+head over to: http://geo.projectcodex.co:3000
+
+---
+
+#Questions?
+
+---
+
+## Your task
+
+Create a widget that can capture 2 coordinates and calculate the distance between them.
+
+---
+
+</textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>

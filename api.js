@@ -1,6 +1,19 @@
 var geolib = require('geolib'),
     Promise = require('bluebird');
 
+exports.locations = function(req, res, next){
+    req.getServices()
+        .then(function(services){
+            var dataService = services.dataService;
+            //console.log('locations');
+            return dataService.getLocations()
+        })
+        .then(function(locations){
+            console.log(locations);
+            res.send(locations);
+        });
+};
+
 exports.distance_from = function(req, res, next){
     req.getServices()
         .then(function(services){
@@ -29,9 +42,6 @@ exports.get_all = function(req, res, next){
     req.getServices()
         .then(function(services){
             var dataService = services.dataService;
-
-            console.log(req.body.ids);
-
             return dataService.isIn(JSON.parse(req.params.id));
         })
         .then(function(locations){
