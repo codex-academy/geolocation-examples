@@ -1,6 +1,16 @@
 var geolib = require('geolib'),
     Promise = require('bluebird');
 
+var handleError = function(res){
+    return function(err){
+        res.send({
+            status : "failed",
+            err : err.message,
+            stacktrace : err.stack
+        })
+    };
+};
+
 exports.locations = function(req, res, next){
     req.getServices()
         .then(function(services){
@@ -11,7 +21,7 @@ exports.locations = function(req, res, next){
         .then(function(locations){
             console.log(locations);
             res.send(locations);
-        });
+        }).catch(handleError(res));
 };
 
 exports.distance_from = function(req, res, next){
@@ -35,7 +45,7 @@ exports.distance_from = function(req, res, next){
                 to : to.description,
                 distance : distance
             });
-        });
+        }).catch(handleError(res));;
 };
 
 exports.get_all = function(req, res, next){
@@ -56,7 +66,7 @@ exports.get_all = function(req, res, next){
             res.send({
                 location : locations[0]
             });
-        });
+        }).catch(handleError(res));;
 };
 
 
@@ -69,7 +79,7 @@ exports.center = function(req, res, next){
         .then(function(locations){
             var center = geolib.getCenter(locations);
             res.send({center : center});
-        });
+        }).catch(handleError(res));;
 };
 
 
@@ -97,7 +107,7 @@ exports.distance = function(req, res, next){
                 distance : distance,
                 inCircle : inCircle
             });
-        });
+        }).catch(handleError(res));;
 };
 
 exports.nearest = function(req, res, next){
@@ -127,5 +137,5 @@ exports.nearest = function(req, res, next){
             nearest.nearest_to = from;
 
             res.send(nearest);
-        });
+        }).catch(handleError(res));  ;
 };
