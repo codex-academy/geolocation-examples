@@ -17,7 +17,7 @@ exports.add = function(req, res, next){
 
     var location = {
         description : data.description,
-        latitude : data.langitude,
+        latitude : data.latitude,
         longitude : data.longitude
     };
 
