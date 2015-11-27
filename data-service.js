@@ -13,6 +13,7 @@ module.exports = function(connection){
     }
 
     var addLocation = function(location){
+        location.time = Date.now();
         return query("insert into locations set ?", location);
     };
 
