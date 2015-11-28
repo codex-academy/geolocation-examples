@@ -1,4 +1,19 @@
 
+<script id="distanceTemplate" type="text/x-handlebars-template">
+    Distance from <strong>\{{from}}</strong> to <strong>\{{to}}</strong> is \{{distance}} meters
+</script>
+
+<script id="nearestTemplate" type="text/x-handlebars-template">
+    The nearest location to <strong>\{{nearest_to.description}}</strong> is <strong>\{{key}}</strong> it's \{{distance}}m away.
+</script>
+
+<script id="radiusTemplate" type="text/x-handlebars-template">
+    \{{#if inCircle}}
+        <strong>\{{from}}</strong> is within a radius of <strong>\{{distance}}m</strong> from <strong>\{{to}}</strong>.
+    \{{else}}
+        <strong>\{{from}}</strong> is not in a <strong>\{{distance}}m</strong> radius from <strong>\{{to}}</strong>.
+    \{{/if}}
+</script>
 
 <div class="row">
 
