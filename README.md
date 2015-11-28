@@ -21,7 +21,9 @@ create table locations(
     id int primary key auto_increment,
     description varchar(100),
     latitude char(30),
-    longitude char(30));
+    longitude char(30),
+    time bigint
+    );
 
 
 ```
