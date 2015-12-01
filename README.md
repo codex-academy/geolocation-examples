@@ -1,4 +1,4 @@
-#R U Close?
+# Geo location examples
 
 Experiments with geolocation
 
