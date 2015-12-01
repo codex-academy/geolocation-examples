@@ -2,6 +2,18 @@
 
 Experiments with geolocation
 
+Using:
+
+* [geolib](https://www.npmjs.com/package/geolib)
+* HTML5 geolocation support
+* Google Maps
+
+Supporting technology:
+
+* API
+* Ajax using jQuery
+* Client Side Handlebars
+
 #Setup
 
 ## Create a database
