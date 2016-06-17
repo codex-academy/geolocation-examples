@@ -80,5 +80,5 @@ var portNumber = process.env.CRUD_PORT_NR || 3000;
 
 //start everything up
 app.listen(portNumber, function () {
-    console.log('ruclose app running at port # :', portNumber);
+    console.log('ruclose app running at http://localhost:' + portNumber);
 });

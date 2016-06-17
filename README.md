@@ -14,9 +14,9 @@ Supporting technology:
 * Ajax using jQuery
 * Client Side Handlebars
 
-#Setup
+## Setup
 
-## Create a database
+### Create a database
 
 ```sql
 CREATE DATABASE geolocation;
@@ -25,24 +25,27 @@ GRANT ALL PRIVILEGES ON geolocation.* TO geo@localhost;
 FLUSH PRIVILEGES;
 ```
 
-## Create tables
+### Create tables
 
 ```sql
+USE geolocation;
 
-create table locations(
-    id int primary key auto_increment,
-    description varchar(100),
-    latitude char(30),
-    longitude char(30),
-    time bigint
+CREATE TABLE locations(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    description VARCHAR(100),
+    latitude CHAR(30),
+    longitude CHAR(30),
+    TIME BIGINT
     );
-
-
 ```
 
-## Install the dependencies
+### Install the dependencies
 
-Using: `npm install`
+`npm install`
+
+### Run the application
+
+`node index.js`
 
 ## Tools for break points
 
